@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-GB
+early_access: true
+reviews:
+  profile: assertive
+  review_details: true
+  auto_assign_reviewers: true
+  auto_review:
+    auto_pause_after_reviewed_commits: 0
+    base_branches:
+      - .*
+issue_enrichment:
+  auto_enrich:
+    enabled: true
