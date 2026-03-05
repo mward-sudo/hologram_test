@@ -33,8 +33,8 @@ defmodule Blog.PostPage do
             </svg>
             <span class="text-lg font-semibold text-gray-900 dark:text-gray-100">{@post.likes}</span>
           </div>
-          <button 
-            $click="like_post" 
+          <button
+            $click="like_post"
             class="px-6 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 active:bg-indigo-800 transition-colors shadow-sm hover:shadow-md">
             Like this post
           </button>
