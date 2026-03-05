@@ -4,6 +4,9 @@
 # Hologram generated JavaScript bundles.
 /priv/static/hologram/
 
+# VS Code settings, extensions, and launch configurations.
+/.vscode/
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
