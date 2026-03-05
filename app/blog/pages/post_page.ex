@@ -1,5 +1,7 @@
 defmodule Blog.PostPage do
   use Hologram.Page
+  alias HologramTest.Repo
+  alias HologramTest.Blog.Post
 
   route "/posts/:id"
 
@@ -8,14 +10,7 @@ defmodule Blog.PostPage do
   layout Blog.MainLayout
 
   def init(params, component, _server) do
-    # In real app, fetch from database
-    post = %{
-      id: params.id,
-      title: "Example Post",
-      content: "This is the full content...",
-      likes: 0
-    }
-
+    post = Repo.get!(Post, params.id)
     put_state(component, :post, post)
   end
 
@@ -41,8 +36,12 @@ defmodule Blog.PostPage do
   end
 
   def command(:save_like, params, server) do
-    # In real app, save to database
-    IO.puts("Liked post #{params.post_id}")
+    post = Repo.get!(Post, params.post_id)
+
+    post
+    |> Post.changeset(%{likes: post.likes + 1})
+    |> Repo.update!()
+
     server
   end
 end

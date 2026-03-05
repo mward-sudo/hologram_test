@@ -1,18 +1,16 @@
 defmodule Blog.HomePage do
   use Hologram.Page
   alias Blog.Components.PostPreview
+  alias HologramTest.Repo
+  alias HologramTest.Blog.Post
+  import Ecto.Query
 
   route "/"
 
   layout Blog.MainLayout
 
   def init(_params, component, _server) do
-    # In real app, fetch from database
-    posts = [
-      %{id: 1, title: "First Post", excerpt: "This is my first post"},
-      %{id: 2, title: "Second Post", excerpt: nil}
-    ]
-
+    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
     put_state(component, :posts, posts)
   end
 
