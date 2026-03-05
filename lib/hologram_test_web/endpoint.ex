@@ -24,7 +24,7 @@ defmodule HologramTestWeb.Endpoint do
     at: "/",
     from: :hologram_test,
     gzip: not code_reloading?,
-    only: HologramTestWeb.static_paths(),
+    only: ["hologram" | HologramTestWeb.static_paths()],
     raise_on_missing_only: code_reloading?
 
   # Code reloading can be explicitly enabled under the
@@ -51,5 +51,7 @@ defmodule HologramTestWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
+  plug Hologram.Router
   plug HologramTestWeb.Router
 end

@@ -1,6 +1,9 @@
 # ExpertLS
 /.expert/
 
+# Hologram generated JavaScript bundles.
+/priv/static/hologram/
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
